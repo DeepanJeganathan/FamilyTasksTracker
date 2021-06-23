@@ -16,21 +16,27 @@ namespace FamilyTasksTracker.Repository
         {
             this._context = familyTasksTrackerDbContext;
         }
-        public bool Create(Email email)
+
+        public async Task<bool> Create(Email email)
         {
-            _context.Emails.Add(email);
-            return Save();
+            await _context.Emails.AddAsync(email);
+            return await Save();
         }
 
-        public bool Delete(Email email)
+        public async Task<bool> Delete(Email email)
         {
             _context.Emails.Remove(email);
-            return Save();
+            return await Save();
+        }
+
+        public bool Exists(int id)
+        {
+            return _context.Emails.Any(x => x.EmailId == id);
         }
 
         public Email Get(int id)
         {
-            return _context.Emails.FirstOrDefault(x => x.EmailId== id);
+            return _context.Emails.FirstOrDefault(x => x.EmailId == id);
         }
 
         public List<Email> GetAll()
@@ -38,20 +44,15 @@ namespace FamilyTasksTracker.Repository
             return _context.Emails.ToList();
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
-            return _context.SaveChanges() >= 0 ? true : false;
+            return await _context.SaveChangesAsync() >= 0 ? true : false;
         }
 
-        public bool TaskExists(int id)
-        {
-            return _context.Emails.Any(x => x.EmailId == id);
-        }
-
-        public bool Update(Email email)
+        public async Task<bool> Update(Email email)
         {
             _context.Emails.Update(email);
-            return Save();
+            return await Save();
         }
     }
 }

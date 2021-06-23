@@ -16,16 +16,16 @@ namespace FamilyTasksTracker.Repository
         {
             this._context = familyTasksTrackerDbContext;
         }
-        public bool Create(Person person)
+        public async Task<bool> Create(Person person)
         {
-            _context.Persons.Add(person);
-            return Save();
+            await _context.Persons.AddAsync(person);
+            return await Save();
         }
 
-        public bool Delete(Person person)
+        public async Task<bool> Delete(Person person)
         {
             _context.Persons.Remove(person);
-            return Save();
+            return await Save();
         }
 
         public Person Get(int id)
@@ -38,20 +38,20 @@ namespace FamilyTasksTracker.Repository
             return _context.Persons.ToList();
         }
 
-        public bool Save()
+        public async Task<bool> Save()
         {
-            return _context.SaveChanges() >= 0 ? true : false;
+            return await _context.SaveChangesAsync() >= 0 ? true : false;
         }
 
-        public bool TaskExists(int id)
+        public bool Exists(int id)
         {
            return _context.Persons.Any(x => x.PersonId == id);
         }
 
-        public bool Update(Person person)
+        public async Task<bool> Update(Person person)
         {
             _context.Persons.Update(person);
-            return Save();
+            return await Save();
         }
     }
 }

@@ -10,10 +10,10 @@ namespace FamilyTasksTracker.Service
     {
         List<Person> GetAll();
         Person Get(int id);
-        bool Create(Person person);
-        bool Update(Person person);
-        bool Delete(Person person);
-        bool TaskExists(int id);
-        bool Save();
+        Task<bool> Create(Person person);
+        Task<bool> Update(Person person);
+        Task<bool> Delete(Person person);
+        bool Exists(int id);
+        Task<bool> Save();
     }
 }

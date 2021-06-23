@@ -17,42 +17,39 @@ namespace FamilyTasksTracker.Repository
             this._context = familyTasksTrackerDbContext;
         }
 
-        public bool Create(TaskToDo taskToDo)
-        {
-            _context.TaskToDos.Add(taskToDo);
-            return Save();
-        }
-
-        public bool Delete(TaskToDo taskToDo)
-        {
-            _context.TaskToDos.Remove(taskToDo);
-            return Save();
-        }
-
-        public TaskToDo Get(int id)
-        {
-            return _context.TaskToDos.FirstOrDefault(x => x.TaskToDoId == id);
-        }
-
-        public List<TaskToDo> GetAll()
-        {
-            return _context.TaskToDos.ToList();
-        }
-
-        public bool Save()
-        {
-            return _context.SaveChanges() >= 0 ? true : false;
-        }
-
-        public bool TaskExists(int id)
+        public Task<bool> Create(TaskToDo taskToDo)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(TaskToDo taskToDo)
+        public Task<bool> Delete(TaskToDo taskToDo)
         {
-            _context.TaskToDos.Update(taskToDo);
-            return Save();
+            throw new NotImplementedException();
+        }
+
+        public bool Exists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TaskToDo Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<TaskToDo> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Save()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> Update(TaskToDo taskToDo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

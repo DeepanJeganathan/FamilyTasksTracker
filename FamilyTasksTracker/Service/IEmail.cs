@@ -9,11 +9,11 @@ namespace FamilyTasksTracker.Service
    public  interface IEmail
     {
         List<Email> GetAll();
-        Email Get(int id);
-        bool Create(Email email);
-        bool Update(Email email);
-        bool Delete(Email email);
-        bool TaskExists(int id);
-        bool Save();
+        Email Get(int id);       
+        Task<bool> Create(Email email);
+        Task<bool> Update(Email email);
+        Task<bool> Delete(Email email);
+        bool Exists(int id);
+        Task<bool> Save();
     }
 }

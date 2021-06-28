@@ -4,14 +4,16 @@ using FamilyTasksTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FamilyTasksTracker.Migrations
 {
     [DbContext(typeof(FamilyTasksTrackerDbContext))]
-    partial class FamilyTasksTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210628070421_fix_email_model")]
+    partial class fix_email_model
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

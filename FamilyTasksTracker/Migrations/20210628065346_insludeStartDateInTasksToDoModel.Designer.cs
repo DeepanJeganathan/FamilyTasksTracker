@@ -4,14 +4,16 @@ using FamilyTasksTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FamilyTasksTracker.Migrations
 {
     [DbContext(typeof(FamilyTasksTrackerDbContext))]
-    partial class FamilyTasksTrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210628065346_insludeStartDateInTasksToDoModel")]
+    partial class insludeStartDateInTasksToDoModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,9 +28,8 @@ namespace FamilyTasksTracker.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("EmailAddress")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EmailAddress")
+                        .HasColumnType("int");
 
                     b.Property<int>("PersonId")
                         .HasColumnType("int");

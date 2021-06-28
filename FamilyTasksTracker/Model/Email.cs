@@ -11,7 +11,7 @@ namespace FamilyTasksTracker.Model
         [Key]
         public int EmailId { get; set; }
         [Required]
-        public int EmailAddress { get; set; }
+        public string EmailAddress { get; set; }
         public Person Person { get; set; }
         public int PersonId { get; set; }
     }

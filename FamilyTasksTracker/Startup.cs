@@ -35,18 +35,23 @@ namespace FamilyTasksTracker
             services.AddScoped<ITaskToDo, TaskToDoRepository>();
             services.AddScoped<IEmail, EmailRepository>();
             services.AddScoped<IPerson, PersonRepository>();
+            services.AddCors(options =>
+            { options.AddPolicy("CorsPolicy", 
+                policy => policy.WithOrigins("http://localhost:3000/").AllowAnyOrigin()
+                .AllowAnyHeader().AllowAnyMethod()); });
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("CorsPolicy");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+           // app.UseHttpsRedirection();
 
             app.UseRouting();
 
